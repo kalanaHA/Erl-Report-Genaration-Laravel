@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Report one</h1>
+            <h1>DashBoard</h1>
           </div>
           {{-- <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -26,98 +26,8 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <div class="card card-primary">
-                <div class="card-header">
-                  <h3 class="card-title">Report one</h3>
-                </div>
-                <!-- /.card-header -->
-                <!-- form start -->
-                <form>
-                  <div class="card-body">
-
-                    <div class="form-row pl-3 pr-3">
-                        <div class="form-group col-md-6 pr-3">
-                          <label
-                            >Start Date</label
-                          >
-                          <input
-                            type="date"
-                            class="form-control"
-                            name="applicant_email"
-                            placeholder="Enter Contact email"
-                          />
-                        </div>
-
-                        <div class="form-group col-md-6 pr-3">
-                          <label
-                            >End Date</label
-                          >
-                          <input
-                            type="date"
-                            class="form-control"
-                            name="applicant_designation"
-                            placeholder="Enter Designation"
-                          />
-                        </div>
-                      </div>
-                  </div>
-                  <!-- /.card-body -->
-
-                  <div class="card-footer">
-                    <button type="submit" class="btn btn-primary" style="width: 120px;">Submit</button> &nbsp;&nbsp;&nbsp; <button type="reset" class="btn btn-warning"  style="width: 120px; color:white">Reset</button>
-                  </div>
-                </form>
-              </div>
-
-            <div class="card" >
-              <div class="card-header">
-                <h3 class="card-title">Report one</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="report_01" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>sample field</th>
-                    <th>sample field</th>
-                    <th>sample field</th>
-                    <th>sample field</th>
-                    <th>sample field</th>
-                    <th>sample field</th>
-                    <th>sample field</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                    @for ($x =0 ; $x <25 ; $x++)
-                    <tr>
-                        <td>sample data</td>
-                        <td>sample data</td>
-                        <td>sample data</td>
-                        <td>sample data</td>
-                        <td>sample data</td>
-                        <td>sample data</td>
-                        <td>sample data</td>
-                      </tr>
-                    @endfor
 
 
-                  </tbody>
-              <!--     <tfoot>
-                  <tr>
-                   <th>Name</th>
-                    <th>Organization</th>
-                    <th>Designation</th>
-                    <th>User Category</th>
-                    <th>Email</th>
-                    <th>Reason</th>
-                    <th>Action</th>
-                  </tr>
-                  </tfoot> -->
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
           </div>
         </div>
       </div>

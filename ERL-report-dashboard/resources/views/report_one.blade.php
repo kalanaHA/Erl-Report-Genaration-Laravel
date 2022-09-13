@@ -10,12 +10,12 @@
           <div class="col-sm-6">
             <h1>Report one</h1>
           </div>
-          <div class="col-sm-6">
+          {{-- <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Report one</li>
             </ol>
-          </div>
+          </div> --}}
         </div>
       </div>
       <!-- /.container-fluid -->
@@ -69,7 +69,7 @@
                 </form>
               </div>
 
-            <div class="card" hidden>
+            <div class="card" >
               <div class="card-header">
                 <h3 class="card-title">Report one</h3>
               </div>
@@ -144,5 +144,15 @@
 <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <!-- <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script> -->
 
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $("#report_01").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": [ "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#report_01_wrapper .col-md-6:eq(0)');
+
+  });
+</script>
 </body>
 </html>
