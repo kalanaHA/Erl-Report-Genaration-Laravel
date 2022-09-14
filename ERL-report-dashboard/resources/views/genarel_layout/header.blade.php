@@ -24,6 +24,10 @@
    <!-- Toastr -->
   <link rel="stylesheet" href="{{asset('admin/plugins/toastr/toastr.min.css')}}">
 
+  <!-- Year picker -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
   <style type="text/css">
 
   </style>
