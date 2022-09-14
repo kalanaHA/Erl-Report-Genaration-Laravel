@@ -112,8 +112,64 @@
                   </div>
                 </form>
               </div>
+                @if(Session::has('results'))
+                <div class="card" >
+                    <div class="card-header">
+                      <h3 class="card-title">Report one Results</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="report_02" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                              <th>Date</th>
+                              <th>License Status</th>
+                              <th>License Type</th>
+                              <th>License No</th>
+                              <th>Vehicle Registration Number</th>
+                              <th>Total Amount</th>
+                              <th>License Issued Date</th>
+                              <th>License Expiry Date</th>
+                              <th>User Name</th>
+                              <th>Authority</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                              @foreach(Session::get('results') as $res)
+                              <tr>
+                                  <td>{{ date('Y-m-d', strtotime($res->Date)); }}</td>
+                                  <td>{{ $res->description }}</td>
+                                  <td>{{ $res->Description }}</td>
+                                  <td>{{ $res->License_No }}</td>
+                                  <td>{{ $res->Vehicle_Reg_No }}</td>
+                                  <td>{{ $res->Total_Amount }}</td>
+                                  <td>{{ date('Y-m-d', strtotime($res->License_Issued_Date)); }}</td>
+                                  <td>{{ date('Y-m-d', strtotime($res->License_Expiry_Date)); }}</td>
+                                  <td>{{ $res->User_Name }}</td>
+                                  <td>{{ $res->Authority }}</td>
+                                </tr>
+                              @endforeach
+                            </tbody>
+                          </table>
+                    </div>
+                    <!-- /.card-body -->
+                    @php
+                        Session::forget('status');
+                    @endphp
+                  </div>
+                  <!-- /.card -->
+                @endif
 
-            <!-- /.card -->
+            @if(Session::has('status'))
+            <div class="row pl-2 pr-2">
+                <div class="col-12 alert alert-danger container">
+                    {{ Session::get('status') }}
+                    @php
+                        Session::forget('status');
+                    @endphp
+                </div>
+            </div>
+        @endif
           </div>
         </div>
       </div>
@@ -150,10 +206,10 @@
 <!-- Page specific script -->
 <script>
   $(function () {
-    $("#report_01").DataTable({
+    $("#report_02").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
       "buttons": [ "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#report_01_wrapper .col-md-6:eq(0)');
+    }).buttons().container().appendTo('#report_02_wrapper .col-md-6:eq(0)');
 
   });
 

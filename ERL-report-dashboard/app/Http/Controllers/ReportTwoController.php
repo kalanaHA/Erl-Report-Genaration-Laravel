@@ -17,6 +17,13 @@ class ReportTwoController extends Controller
 
     public function report_two_data(Request $request)
     {
+        $request->validate([
+            'province' => 'required',
+            'license_status' => 'required',
+            'start_date' => 'required',
+            'license_type' => 'required',
+
+        ]);
         set_time_limit(400);
         // dd($request);
         $monthtemp = (int)substr($request->start_date, 5);
@@ -64,7 +71,7 @@ class ReportTwoController extends Controller
 
         if($results){
 
-            return view("report_two_result")->with(compact('results'));
+            return back()->with('results', $results)->withInput();
 
         }else{
             return back()->with("status" , "No data Found");
