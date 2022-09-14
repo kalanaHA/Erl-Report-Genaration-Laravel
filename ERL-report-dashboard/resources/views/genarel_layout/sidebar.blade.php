@@ -153,7 +153,7 @@
             </a>
           </li>
             <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/report_two" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
               <p>Report 02</p>
             </a>

@@ -4,6 +4,7 @@ use App\Http\Controllers\ReportOneController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReportTwoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,10 @@ use App\Http\Controllers\UserController;
 // login routes
 Route::get('/login', [WebController::class, 'login']);
 Route::post('/login', [UserController::class, "user_login"])->name('user.login');
+
+Route::get('/report_two', [WebController::class, 'report_two'])->name('report_two');
+Route::post('/report_two_data', [ReportTwoController::class, 'report_two_data'])->name('report_two_data');
+Route::get('/report_two_result', [WebController::class, 'report_two_result'])->name('report_two_result');
 
 Route::get('/dashboard', [WebController::class, 'dashboard_view']);
 
