@@ -30,7 +30,6 @@ Route::get('/dashboard', [WebController::class, 'dashboard_view']);
 //Report one Routes
 Route::get('/report_one', [WebController::class, 'report_one'])->name('report_one');
 Route::post('/report_one_data', [ReportOneController::class, 'report_one_data'])->name('report_one_data');
-Route::get('/report_one_result', [WebController::class, 'report_one_result'])->name('report_one_result');
 
 //Report three Routes
 Route::get('/report_three', [WebController::class, 'report_three'])->name('report_three');

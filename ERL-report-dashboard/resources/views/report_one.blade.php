@@ -41,7 +41,9 @@
                                 <select class="form-control select2bs4" style="width: 100%;" name="province">
                                   <option selected="selected" disabled>Select Province</option>
                                   @foreach ($Provinces as $province )
-                                    <option value={{ $province->Province_ID }} key={{ $province->Province_ID }}>{{ $province->Province }}</option>
+                                    @if ($province->Province_ID != '0')
+                                    <option value={{ $province->Province_ID }} {{ old('province') == $province->Province_ID ? 'selected' : '' }}>{{ $province->Province }}</option>
+                                    @endif
                                   @endforeach
                                 </select>
 
@@ -55,7 +57,7 @@
                         <select class="form-control select2bs4" style="width: 100%;" name="license_status">
                           <option selected="selected" disabled>Select License Status</option>
                             @foreach ($License_Status as $license_status )
-                                <option value={{ $license_status->License_Status_ID }} key={{ $license_status->License_Status_ID }}>{{ $license_status->Description }}</option>
+                                <option value={{ $license_status->License_Status_ID }} {{ old('license_status') == $license_status->License_Status_ID ? 'selected' : '' }}>{{ $license_status->Description }}</option>
                             @endforeach
                         </select>
                         @if ($errors->has('license_status'))
@@ -75,6 +77,7 @@
                             class="form-control"
                             name="date"
                             id="datepicker"
+                            value="{{ old('date') }}"
                             placeholder="YYYY-MM"
                           />
                           @if ($errors->has('license_status'))
@@ -94,15 +97,56 @@
                   </div>
                 </form>
             </div>
-          </div>
-          @if(Session::has('status'))
-            <div class="alert alert-success container">
-                {{ Session::get('status') }}
-                @php
-                    Session::forget('status');
-                @endphp
+            @if(Session::has('results'))
+                <div class="card" >
+                    <div class="card-header">
+                      <h3 class="card-title">Report one Results</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                      <table id="report_01" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                          <th>Province</th>
+                          <th>Authority</th>
+                          <th>Count License ID</th>
+                          <th>License Amount</th>
+                          <th>Arrears</th>
+                          <th>Fine</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Session::get('results') as $res)
+                            <tr><td>{{ $res->Province }}</td>
+                                <td>{{ $res->Authority }}</td>
+                                <td>{{ $res->Count_License_ID }}</td>
+                                <td>{{ $res->License_Amount }}</td>
+                                <td>{{ $res->Arrears }}</td>
+                                <td>{{ $res->Fine }}</td></tr>
+                            @endforeach
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- /.card-body -->
+                    @php
+                        Session::forget('status');
+                    @endphp
+                  </div>
+                  <!-- /.card -->
+                @endif
+
+            @if(Session::has('status'))
+            <div class="row pl-2 pr-2">
+                <div class="col-12 alert alert-danger container">
+                    {{ Session::get('status') }}
+                    @php
+                        Session::forget('status');
+                    @endphp
+                </div>
             </div>
         @endif
+          </div>
         </div>
       </div>
           </section>
@@ -132,7 +176,6 @@
 <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script>
 <!-- Page specific script -->
-
 <script>
 
 $(document).ready(function () {
