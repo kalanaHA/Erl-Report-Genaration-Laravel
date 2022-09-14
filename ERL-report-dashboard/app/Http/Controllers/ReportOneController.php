@@ -47,11 +47,11 @@ class ReportOneController extends Controller
         $results = DB::select($quary);
 
         if($results){
-
-            return view("report_one_result")->with(compact('results'));
+            return back()->with('results', $results)->withInput();
+            // return view("report_one_result")->with(compact('results'));
 
         }else{
-            return back()->with("status" , "No data Found");
+            return back()->with("status" , "No data Found")->withInput();
         }
 
 
