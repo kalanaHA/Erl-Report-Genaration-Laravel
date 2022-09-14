@@ -10,11 +10,11 @@
           <div class="col-sm-6">
             <h1>Report one</h1>
           </div>
-          <div class="col-sm-6">
+          {{-- <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item active">Report one</li>
             </ol>
-          </div>
+          </div> --}}
         </div>
       </div>
       <!-- /.container-fluid -->
