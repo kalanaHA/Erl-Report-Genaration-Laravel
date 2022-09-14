@@ -8,13 +8,14 @@
     <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Report one</h1>
+            <h1>Report Three</h1>
           </div>
-          <div class="col-sm-6">
+          {{-- <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Report one</li>
             </ol>
-          </div>
+          </div> --}}
         </div>
       </div>
       <!-- /.container-fluid -->
@@ -27,29 +28,15 @@
           <div class="col-12">
             <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title">Report one</h3>
+                  <h3 class="card-title">Report Three</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action={{ route('report_one_data') }} method="POST">
+                <form method="POST">
                     @csrf
                   <div class="card-body">
 
                     <div class="form-row pl-3 pr-3">
-                        <div class="form-group col-md-6 pr-3">
-                                <label>Province</label>
-                                <select class="form-control select2bs4" style="width: 100%;" name="province">
-                                  <option selected="selected" disabled>Select Province</option>
-                                  @foreach ($Provinces as $province )
-                                    <option value={{ $province->Province_ID }} key={{ $province->Province_ID }}>{{ $province->Province }}</option>
-                                  @endforeach
-                                </select>
-
-                                @if ($errors->has('province'))
-                                <span class="text-danger">{{ $errors->first('province') }}</span>
-                            @endif
-                      </div>
-
                       <div class="form-group col-md-6 pr-3">
                         <label>License Status</label>
                         <select class="form-control select2bs4" style="width: 100%;" name="license_status">
@@ -59,13 +46,10 @@
                             @endforeach
                         </select>
                         @if ($errors->has('license_status'))
-                        <span class="text-danger">{{ $errors->first('license_status') }}</span>
-                    @endif
+                            <span class="text-danger">{{ $errors->first('license_status') }}</span>
+                        @endif
                         </div>
-                    </div>
 
-
-                    <div class="form-row pl-3 pr-3">
                         <div class="form-group col-md-6 pr-3">
                           <label
                             >Date (Year and month)</label
@@ -78,9 +62,14 @@
                             placeholder="YYYY-MM"
                           />
                           @if ($errors->has('license_status'))
-                          <span class="text-danger">{{ $errors->first('license_status') }}</span>
-                      @endif
+                              <span class="text-danger">{{ $errors->first('license_status') }}</span>
+                          @endif
                         </div>
+                    </div>
+
+
+                    <div class="form-row pl-3 pr-3">
+
 
                         <div class="form-group col-md-6 pr-3" hidden>
                         </div>
@@ -93,16 +82,36 @@
                     <button type="submit" class="btn btn-primary" style="width: 120px;">Submit</button> &nbsp;&nbsp;&nbsp; <button type="reset" class="btn btn-warning"  style="width: 120px; color:white">Reset</button>
                   </div>
                 </form>
+              </div>
+
+            <div class="card"  >
+              <div class="card-header">
+                <h3 class="card-title">Report three</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="report_01" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Province</th>
+                    <th>Authority</th>
+                    <th>Count License ID</th>
+                    <th>License Amount</th>
+                    <th>Arrears</th>
+                    <th>Fine</th>
+
+                  </tr>
+                  </thead>
+                  <tbody>
+
+
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
             </div>
+            <!-- /.card -->
           </div>
-          @if(Session::has('status'))
-            <div class="alert alert-success container">
-                {{ Session::get('status') }}
-                @php
-                    Session::forget('status');
-                @endphp
-            </div>
-        @endif
         </div>
       </div>
           </section>
