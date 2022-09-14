@@ -176,7 +176,6 @@
 <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script>
 <!-- Page specific script -->
-
 <script>
 
 $(document).ready(function () {
