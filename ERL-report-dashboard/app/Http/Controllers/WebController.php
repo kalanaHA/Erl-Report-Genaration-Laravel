@@ -19,7 +19,19 @@ class WebController extends Controller
     }
 
     public function report_one(){
-        return view('report_one');
+        $Provinces = DB::select("SELECT * FROM province;");
+        $License_Status = DB::select("SELECT * FROM license_status");
+        return view('report_one', compact('Provinces', 'License_Status'));
+    }
+
+    public function report_three(){
+        $License_Status = DB::select("SELECT * FROM license_status");
+        return view('report_three',compact('License_Status'));
+    }
+
+    public function report_four(){
+        $License_Status = DB::select("SELECT * FROM license_status");
+        return view('report_four',compact('License_Status'));
     }
 
     public function report_two(){
