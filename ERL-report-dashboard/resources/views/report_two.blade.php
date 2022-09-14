@@ -45,8 +45,10 @@
                             <select class="form-control select2bs4" style="width: 100%;" name="province">
                                 <option selected="selected" disabled>Select Province</option>
                                 @foreach ($Provinces as $province )
-                                  <option value={{ $province->Province_ID }} key={{ $province->Province_ID }}>{{ $province->Province }}</option>
-                                @endforeach
+                                    @if ($province->Province_ID != '0')
+                                    <option value={{ $province->Province_ID }} {{ old('province') == $province->Province_ID ? 'selected' : '' }}>{{ $province->Province }}</option>
+                                    @endif
+                                  @endforeach
                               </select>
                           @if ($errors->has('province'))
                              <span class="text-danger ">{{ $errors->first('province') }}</span>
@@ -122,6 +124,10 @@
 <!-- jQuery -->
 <script src="{{asset('admin/plugins/jquery/jquery.min.js')}}"></script>
 
+<!-- Year Picker -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('admin/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <!-- DataTables  & Plugins -->
@@ -136,12 +142,8 @@
 <script src="{{asset('admin/plugins/pdfmake/vfs_fonts.js')}}"></script>
 <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
-<!-- <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script> -->
-
-<!-- Year Picker -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+<script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script>
+<!-- Page specific script -->
 
 
 

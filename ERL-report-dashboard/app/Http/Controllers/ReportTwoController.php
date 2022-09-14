@@ -14,8 +14,10 @@ use Exception;
 
 class ReportTwoController extends Controller
 {
+
     public function report_two_data(Request $request)
     {
+        set_time_limit(400);
         // dd($request);
         $monthtemp = (int)substr($request->start_date, 5);
         if($monthtemp == 12){
@@ -28,7 +30,7 @@ class ReportTwoController extends Controller
         }
 
 
-         $ReportTwoData = DB::select("SELECT
+         $ReportTwoData ="SELECT
          IFNULL(Modified_Time, Created_Time) AS Date,
          license_status.description,
          license_type.Description,
@@ -53,11 +55,20 @@ class ReportTwoController extends Controller
          rev_license_record.province_id = '$request->province'
              AND (Created_Time BETWEEN '$request->start_date-01' AND '$enddate-01')
              AND (rev_license_record.License_Type_ID ='$request->license_type'
-             OR rev_license_record.License_Status_ID = '$request->license_status')");
+             OR rev_license_record.License_Status_ID = '$request->license_status')";
 
 
-        // dd($ReportTwoData);
-        return back()->with(compact('ReportTwoData'));
+
+
+        $results = DB::select($ReportTwoData);
+
+        if($results){
+
+            return view("report_two_result")->with(compact('results'));
+
+        }else{
+            return back()->with("status" , "No data Found");
+        }
 
     }
 }
